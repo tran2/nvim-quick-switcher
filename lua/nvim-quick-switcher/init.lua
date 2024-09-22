@@ -108,7 +108,7 @@ function M.find(input, user_config)
   local path = config.path and config.path or path_state.path
   local prefix = util.resolve_prefix(path_state, config.prefix)
   if config.ignore_prefix then prefix = '' end
-  local base_find = [[find ]] .. path .. [[ -maxdepth ]] .. config.maxdepth
+  local base_find = [[find ]] .. path .. [[ -maxdepth ]] .. config.maxdepth .. config.extra_find_args
   local name_based = ' -name ' .. [[']] .. prefix .. input .. [[']]
   local regex_based = ' -name ' ..
       [[']] .. prefix .. [[*']] .. [[ | grep ]] .. '-' .. config.regex_type .. [[ ']] .. input .. [[']]
